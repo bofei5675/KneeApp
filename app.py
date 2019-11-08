@@ -25,6 +25,7 @@ MODEL_PATH = 'models/your_model.h5'
 from src.models import ResidualNet, ResNet18
 from src.preprocessing import image_preprocessing, detect_preprocessing, padding
 from src.utils import drawFigure, getKneeWithBbox, model_predict
+
 print('Model loaded. Check http://127.0.0.1:5000/')
 print('Load detector ...')
 cur = time.time()
@@ -83,5 +84,5 @@ def upload():
 if __name__ == '__main__':
     # app.run(port=5002, debug=True)
     # Serve the app with gevent
-    http_server = WSGIServer(('', 5000), app)
+    http_server = WSGIServer(('', 5001), app)
     http_server.serve_forever()
