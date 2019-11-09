@@ -27,6 +27,7 @@ def drawFigure(img,preds,img_path):
     ax.add_patch(rect2)
     # save image
     plt.savefig(img_path, dpi=300)
+    plt.tight_layout()
     plt.close()
 
 def getKneeWithBbox(img,bbox):
@@ -77,7 +78,7 @@ def model_predict(model, left, right):
     left_pred = np.argmax(left_pred, axis=1)
     right_pred = np.argmax(right_pred, axis=1)
 
-    return left_pred, right_pred
+    return left_pred.tolist(), right_pred.tolist()
 
 
 def center_crop(img, size=(898,898)):
