@@ -4,7 +4,7 @@
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 ------------------
 ## Update
-- [] Working on automating deployment like `gunicorn`
+- [ ] Working on automating deployment like `gunicorn`
 - [x] 2019/11/15, deploy this web app on the Langone server, which supports the access via ssh tunnel 
 - [x] 2019/11/11, finish basic detector and classifier pipeline 
 
