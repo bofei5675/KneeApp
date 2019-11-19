@@ -21,12 +21,12 @@
 ## Getting start on the server (will change to a better way later)
 
 - Login the server IP address: `10.189.38.45`
-- Git clone this repo, and run the app by `python app.py`
-- open a tunnel by the following command
+- Git clone this repo, and run the app by `python app.py` (on the server)
+- open a tunnel by the following command (on your local machine)
 ```
 ssh -N -L 5001:127.0.0.1:5001 bz1030@10.189.38.45
 ```
-- Open the browser and put `localhost:5001` to see this app
+- Open the browser and put `localhost:5001` to see this app(on your local machine)
 
 ------------------
 
@@ -44,12 +44,11 @@ $ pip install -r requirements.txt
 ```
 
 Make sure you have the following installed:
-- tensorflow
-- keras
 - flask
 - pillow
 - h5py
 - gevent
+- torch
 
 ### Run with Python
 
