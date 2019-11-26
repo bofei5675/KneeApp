@@ -96,6 +96,7 @@ $ python app.py
 You can also use gunicorn instead of gevent
 ```
 $ gunicorn -b 127.0.0.1:5001 app:app
+$ gunicorn -b 127.0.0.1:5001 app:app --log-level=debug --timeout=5
 ```
 
 More deployment options, check [here](http://flask.pocoo.org/docs/0.12/deploying/wsgi-standalone/)
