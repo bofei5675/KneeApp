@@ -1,13 +1,33 @@
+# Knee Web App
 
-## Getting started in 10 minutes
+[![](https://img.shields.io/badge/python-2.7%2C%203.5%2B-green.svg)]()
+[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+------------------
+## Update
+- [ ] Working on automating deployment like `gunicorn`
+- [x] 2019/11/15, deploy this web app on the Langone server, which supports the access via ssh tunnel 
+- [x] 2019/11/11, finish basic detector and classifier pipeline 
+
+------------------
+
+## Getting started in 10 minutes(local)
 
 - Clone this repo 
 - Install requirements
 - Run the script
-- Check http://localhost:5000
+- Check http://localhost:5001
 - Done! :tada:
 
-------------------
+## Getting start on the server (will change to a better way later)
+
+- Login the server IP address: `10.189.38.45`
+- Git clone this repo, and run the app by `python app.py` (on the server)
+- open a tunnel by the following command (on your local machine)
+```
+ssh -N -L 5001:127.0.0.1:5001 bz1030@10.189.38.45
+```
+- Open the browser and put `localhost:5001` to see this app(on your local machine)
+
 
 ## Local Installation
 
@@ -24,10 +44,12 @@ $ pip install -r requirements.txt
 
 Make sure you have the following installed:
 - torch
+=======
 - flask
 - pillow
 - h5py
 - gevent
+- torch
 
 ### Run with Python
 
@@ -39,11 +61,7 @@ $ python app.py
 
 ### Play
 
-Open http://localhost:5000 and have fun. :smiley:
-
-<p align="center">
-  <img src="https://s18.postimg.cc/5ekln1vvt/demo2.gif" width="600px" alt="">
-</p>
+Open http://localhost:5001 and have fun. :smiley:. Port will be configured inside `app.py`.
 
 ------------------
 
@@ -51,16 +69,12 @@ Open http://localhost:5000 and have fun. :smiley:
 
 ### Use your own model
 
-Place your trained `.h5` file saved by `model.save()` under models directory.
-
-Check the [commented code](https://github.com/mtobeiyf/keras-flask-deploy-webapp/blob/master/app.py#L25) in app.py.
+Place your trained `.h5` file saved by `torch.save()` under models directory.
 
 
 ### Use other pre-trained model
 
-See [Keras applications](https://keras.io/applications/) for more available models such as DenseNet, MobilNet, NASNet, etc.
-
-Check [this section](https://github.com/mtobeiyf/keras-flask-deploy-webapp/blob/master/app.py#L25) in app.py.
+Check out `torchvision` for other pre-trained model.
 
 ### UI Modification
 
@@ -75,13 +89,15 @@ To deploy it for public use, you need to have a public **linux server**.
 ### Run the app
 
 Run the script and hide it in background with `tmux` or `screen`.
+
 ```
 $ python app.py
 ```
 
 You can also use gunicorn instead of gevent
 ```
-$ gunicorn -b 127.0.0.1:5000 app:app
+$ gunicorn -b 127.0.0.1:5001 app:app
+$ gunicorn -b 127.0.0.1:5001 app:app --log-level=debug --timeout=5
 ```
 
 More deployment options, check [here](http://flask.pocoo.org/docs/0.12/deploying/wsgi-standalone/)
@@ -107,3 +123,5 @@ server {
 Check Siraj's ["How to Deploy a Keras Model to Production"](https://youtu.be/f6Bf3gl4hWY) video. The corresponding [repo](https://github.com/llSourcell/how_to_deploy_a_keras_model_to_production).
 
 [Building a simple Keras + deep learning REST API](https://blog.keras.io/building-a-simple-keras-deep-learning-rest-api.html)
+
+[Gunicorn with Flask App](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-14-04)
